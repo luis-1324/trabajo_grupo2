@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>LeveUP</title>
+ 
+</head>
+<body>
+  <header>
+    <h1>LeveUP</h1>
+    <a href="Carrito.html">🛒 Carrito</a>
+  </header>
+    </div>
+            <ul class="nav-links">
+                <li><a href="#index.html">Inicio</a></li>
+                <li><a href="#productos.html">Productos</a></li>
+                <li><a href="#Carrito.html">carrito</a></li>
+               
+
+  <main class="productos">
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/8f/be/3b/8fbe3bf05c805300082ee31e475b8c38.jpg" alt="s20fe">
+      <h2>s20fe mejor que es celular de juan diego</h2>
+      <p class="precio" data-precio="50000"></p>
+      <button onclick="agregarAlCarrito('s20fe', 50000)">Añadir al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/b6/59/6c/b6596c11a3a6bbca393109b76694b042.jpg" alt="s24fe">
+      <h2>s24fe mejor que un nokia 323</h2>
+      <p class="precio" data-precio="55000"></p>
+      <button onclick="agregarAlCarrito('s24fe', 55000)">Añadir al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/79/18/01/7918018c610e5be78fce4426f18959a6.jpg" alt="xiaomi 13">
+      <h2>xiomi note 13 mejor que el de juan diego</h2>
+      <p class="precio" data-precio="60000"></p>
+      <button onclick="agregarAlCarrito('xiaomi 13', 60000)">Añadir al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/a6/d9/f1/a6d9f1a4c633e7cd897e2d867d6f2448.jpg" alt="phone 13 pro max">
+      <h2>phone 13 pro max mejor que el de juan diego</h2>
+      <p class="precio" data-precio="70000"></p>
+      <button onclick="agregarAlCarrito('phone 13 pro max', 70000)">Añadir al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/dd/a4/3c/dda43c92487d068566772b1f11bb2473.jpg" alt="nokia 321o">
+      <h2>nokia 321o mejor que el de juan diego</h2>
+      <p class="precio" data-precio="70000"></p>
+      <button onclick="agregarAlCarrito('nokia 3210', 70000)">Añadir al carrito</button>
+    </div><div class="producto">
+      <img src="https://i.pinimg.com/736x/5f/e7/38/5fe73831fe94a521ef90b9e8b9338545.jpg" alt="red magic">
+      <h2>red magic mil veces  mejor que el de juan diego</h2>
+      <p class="precio" data-precio="70000"></p>
+      <button onclick="agregarAlCarrito('red maigic ', 70000)">Añadir al carrito</button>
+    </div>
+  </main>
+
+  <script>
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      alert(`${nombre} añadido al carrito.`);
+    }
+
+    // Formatear precios a COP
+    const formateadorCOP = new Intl.NumberFormat('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      minimumFractionDigits: 0
+    });
+
+    document.querySelectorAll('.precio').forEach(p => {
+      const precio = p.getAttribute('data-precio');
+      p.textContent = formateadorCOP.format(precio);
+    });
+  </script>
+</body>
+</html>
