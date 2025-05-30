@@ -1,75 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WB pets - Carrito</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stilo.css">
 </head>
 <body>
-  <header>
-    <h1>LeveUP</h1>
-    <a href="carrito.html">🛒 Carrito</a>
-  </header>
-    </div>
-            <ul class="nav-links">
-                <li><a href="#index.html">Inicio</a></li>
-                <li><a href="#productos.html">Productos</a></li>
-                <li><a href="#Carrito.html">carrito</a></li>
-               
+     <nav class="navbar navbar-expand-lg navbar-light  navbar-custom fixed-top">
+        <div class="container">
+            <img src="LOGO.jpg" height= "100"  alt="Imagen 1">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Productos.html">Productos</a></li>
+                
+                    <li class="nav-item"><a class="nav-link" href="Carrito.html">Carrito</a></li>
+                    
 
-  <main class="productos">
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/8f/be/3b/8fbe3bf05c805300082ee31e475b8c38.jpg" alt="s20fe">
-      <h2>s20fe mejor que es celular de juan diego</h2>
-      <p class="precio" data-precio="50000"></p>
-      <button onclick="agregarAlCarrito('s20fe', 50000)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/b6/59/6c/b6596c11a3a6bbca393109b76694b042.jpg" alt="s24fe">
-      <h2>s24fe mejor que un nokia 323</h2>
-      <p class="precio" data-precio="55000"></p>
-      <button onclick="agregarAlCarrito('s24fe', 55000)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/79/18/01/7918018c610e5be78fce4426f18959a6.jpg" alt="xiaomi 13">
-      <h2>xiomi note 13 mejor que el de juan diego</h2>
-      <p class="precio" data-precio="60000"></p>
-      <button onclick="agregarAlCarrito('xiaomi 13', 60000)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/a6/d9/f1/a6d9f1a4c633e7cd897e2d867d6f2448.jpg" alt="phone 13 pro max">
-      <h2>phone 13 pro max mejor que el de juan diego</h2>
-      <p class="precio" data-precio="70000"></p>
-      <button onclick="agregarAlCarrito('phone 13 pro max', 70000)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/dd/a4/3c/dda43c92487d068566772b1f11bb2473.jpg" alt="nokia 321o">
-      <h2>nokia 321o mejor que el de juan diego</h2>
-      <p class="precio" data-precio="70000"></p>
-      <button onclick="agregarAlCarrito('nokia 3210', 70000)">Añadir al carrito</button>
-    </div><div class="producto">
-      <img src="https://i.pinimg.com/736x/5f/e7/38/5fe73831fe94a521ef90b9e8b9338545.jpg" alt="red magic">
-      <h2>red magic mil veces  mejor que el de juan diego</h2>
-      <p class="precio" data-precio="70000"></p>
-      <button onclick="agregarAlCarrito('red maigic ', 70000)">Añadir al carrito</button>
-    </div>
-  </main>
+</a>
+                </ul>
+            </div>
+        </div>
+       
+    </nav>
+    <br>
 
-  <script>
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    <div class="container py-5">
+        <h2 class="text-center">Carrito de Compras</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Subtotal</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="lista-carrito">
+                <!-- Los productos agregados aparecerán aquí -->
+            </tbody>
+        </table>
+        <h3>Total: $<span id="total-carrito">0</span></h3>
+        <button class="btn btn-danger" id="vaciar-carrito">Vaciar Carrito</button>
+    </div>
 
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      alert(`${nombre} añadido al carrito.`);
-    }
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const listaCarrito = document.getElementById("lista-carrito");
+            const totalCarrito = document.getElementById("total-carrito");
+            const btnVaciarCarrito = document.getElementById("vaciar-carrito");
 
-    // Formatear precios a COP
-    const formateadorCOP = new Intl.NumberFormat('es-CO', {
-      style: 'currency',
-      currency: 'COP',
-      minimumFractionDigits: 0
-    });
+            function mostrarCarrito() {
+                let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+                listaCarrito.innerHTML = "";    1
 
-    document.querySelectorAll('.precio').forEach(p => {
-      const precio = p.getAttribute('data-precio');
-      p.textContent = formateadorCOP.format(precio);
-    });
-  </script>
+                let total = 0;
+
+                carrito.forEach((producto, index) => {
+                    const subtotal = producto.precio * producto.cantidad;
+                    total += subtotal;
+
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${producto.nombre}</td>
+                        <td>$${producto.precio}</td>
+                        <td>${producto.cantidad}</td>
+                        <td>$${subtotal}</td>
+                        <td><button class="btn btn-danger btn-sm eliminar-producto" data-index="${index}">Eliminar</button></td>
+                    `;
+
+                    listaCarrito.appendChild(row);
+                });
+
+                totalCarrito.textContent = total;
+
+                document.querySelectorAll(".eliminar-producto").forEach(btn => {
+                    btn.addEventListener("click", (e) => {
+                        const index = e.target.dataset.index;
+                        carrito.splice(index, 1);
+                        localStorage.setItem("carrito", JSON.stringify(carrito));
+                        mostrarCarrito();
+                    });
+                });
+            }
+
+            btnVaciarCarrito.addEventListener("click", () => {
+                localStorage.removeItem("carrito");
+                mostrarCarrito();
+            });
+
+            mostrarCarrito();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
 </html>

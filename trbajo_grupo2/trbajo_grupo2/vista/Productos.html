@@ -1,80 +1,145 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>LeveUP</title>
- 
-</head>
-<body>
-  <header>
-    <h1>LeveUP</h1>
-    <a href="Carrito.html">🛒 Carrito</a>
-  </header>
-    </div>
-            <ul class="nav-links">
-                <li><a href="#index.html">Inicio</a></li>
-                <li><a href="#productos.html">Productos</a></li>
-                <li><a href="#Carrito.html">carrito</a></li>
-               
+<div class="col-md-4">
+            <div class="card">
+                <img src="zz2.jpg" class="card-img-top" alt="Producto 2">
+                <div class="card-body">
+                    <h5 class="card-title">New Balance FreshFoam</h5>
+                    <p class="card-text">Tiene una tecnologia de amortiguacion diseñada para proporcionaruna experiencia de carrera suave.</p>
+                    <p class="card-text">170.000</p>
+                    <button class="btn btn-info" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#detalle-producto"
+                        data-bs-nombre="New Balance FreshFoam"
+                        data-bs-precio="38.000"
+                        data-bs-descripcion="Tiene una tecnologia de amortiguacion diseñada para proporcionaruna experiencia de carrera suave.">
+                        Ver detalles
+                    </button>
+                    <button class="btn btn-primary agregar-carrito" 
+                    data-nombre="New Balance FreshFoam" 
+                    data-precio="170.000">Agregar al carrito
+                </button>
+                <br>
+                </div> 
+            </div>
+        </div>
 
-  <main class="productos">
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/8f/be/3b/8fbe3bf05c805300082ee31e475b8c38.jpg" alt="s20fe">
-      <h2>s20fe mejor que es celular de juan diego</h2>
-      <p class="precio" data-precio="50000"></p>
-      <button onclick="agregarAlCarrito('s20fe', 50000)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/b6/59/6c/b6596c11a3a6bbca393109b76694b042.jpg" alt="s24fe">
-      <h2>s24fe mejor que un nokia 323</h2>
-      <p class="precio" data-precio="55000"></p>
-      <button onclick="agregarAlCarrito('s24fe', 55000)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/79/18/01/7918018c610e5be78fce4426f18959a6.jpg" alt="xiaomi 13">
-      <h2>xiomi note 13 mejor que el de juan diego</h2>
-      <p class="precio" data-precio="60000"></p>
-      <button onclick="agregarAlCarrito('xiaomi 13', 60000)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/a6/d9/f1/a6d9f1a4c633e7cd897e2d867d6f2448.jpg" alt="phone 13 pro max">
-      <h2>phone 13 pro max mejor que el de juan diego</h2>
-      <p class="precio" data-precio="70000"></p>
-      <button onclick="agregarAlCarrito('phone 13 pro max', 70000)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="https://i.pinimg.com/736x/dd/a4/3c/dda43c92487d068566772b1f11bb2473.jpg" alt="nokia 321o">
-      <h2>nokia 321o mejor que el de juan diego</h2>
-      <p class="precio" data-precio="70000"></p>
-      <button onclick="agregarAlCarrito('nokia 3210', 70000)">Añadir al carrito</button>
-    </div><div class="producto">
-      <img src="https://i.pinimg.com/736x/5f/e7/38/5fe73831fe94a521ef90b9e8b9338545.jpg" alt="red magic">
-      <h2>red magic mil veces  mejor que el de juan diego</h2>
-      <p class="precio" data-precio="70000"></p>
-      <button onclick="agregarAlCarrito('red maigic ', 70000)">Añadir al carrito</button>
-    </div>
-  </main>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="r4.jpg" class="card-img-top" alt="Producto 2">
+                <div class="card-body">
+                    <h5 class="card-title">Air Jordan 4 Retro</h5>
+                    <p class="card-text">Las Jordan 4 Retro combinan estilo icónico y comodidad moderna. Con su diseño robusto, detalles en malla y la clásica unidad Air visible, estas zapatillas ofrecen soporte, durabilidad y un look atemporal que sigue marcando tendencia dentro y fuera de las canchas.p>
+                    <p class="card-text">170.000</p>
+                    <button class="btn btn-info" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#detalle-producto"
+                    data-bs-nombre="Air Jordan 4 Retros."
+                    data-bs-precio="170.000"
+                    data-bs-descripcion="Las Jordan 4 Retro combinan estilo icónico y comodidad moderna. Con su diseño robusto, detalles en malla y la clásica unidad Air visible, estas zapatillas ofrecen soporte, durabilidad y un look atemporal que sigue marcando tendencia dentro y fuera de las canchas..">
+                    Ver detalles
+                    </button>
+                    <button class="btn btn-primary agregar-carrito" 
+                    data-nombre="Transportador para caninos" 
+                    data-precio="170.000">Agregar al carrito
+                </button>
+                </div>
+            </div>
+        </div>
 
-  <script>
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        <div class="col-md-4">
+            <div class="card">
+                <img src="AG.jpg" class="card-img-top" alt="Producto 2">
+                <div class="card-body">
+                    <h5 class="card-title">Adidas Gazelle</h5>
+                    <p class="card-text">Las Adidas Gazelle son unas zapatillas clásicas de perfil bajo, reconocidas por su diseño retro, su parte superior de ante suave y las icónicas tres bandas laterales. Lanzadas originalmente en los años 60, combinan estilo urbano y deportivo con un toque vintage.</p>
+                    <p class="card-text">100.000</p>
+                    <button class="btn btn-info" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#detalle-producto"
+                    data-bs-nombre="Adidas Gazelle"
+                    data-bs-precio="160.000"
+                    data-bs-descripcion="Las Adidas Gazelle son unas zapatillas clásicas de perfil bajo, reconocidas por su diseño retro, su parte superior de ante suave y las icónicas tres bandas laterales. Lanzadas originalmente en los años 60, combinan estilo urbano y deportivo con un toque vintage.">
+                    Ver detalles
+                    </button>
+                    <button class="btn btn-primary agregar-carrito"
+                    data-nombre="Gimnasio para gatos" 
+                    data-precio="160.000">Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-      alert(`${nombre} añadido al carrito.`);
-    }
 
-    // Formatear precios a COP
-    const formateadorCOP = new Intl.NumberFormat('es-CO', {
-      style: 'currency',
-      currency: 'COP',
-      minimumFractionDigits: 0
-    });
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <img src="TX.jpg" class="card-img-top" alt="Producto 3">
+                    <h5 class="card-title">Nike X Travis Scott</h5>
+                    <p class="card-text">Las Nike x Travis Scott son colaboraciones exclusivas entre el rapero Travis Scott y Nike, que fusionan el estilo urbano con diseños innovadores y detalles distintivos como el Swoosh invertido y la estética "Cactus Jack". Estas ediciones limitadas han revolucionado el mundo de las zapatillas, convirtiéndose en piezas codiciadas por coleccionistas y aficionados al streetwear.</p>
+                    <p class="card-text">$160.000</p>
+                    <button class="btn btn-info" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#detalle-producto"
+                    data-bs-nombre="Nike X Travis Scott"
+                    data-bs-precio="160.000"
+                    data-bs-descripcion="Las Nike x Travis Scott son colaboraciones exclusivas entre el rapero Travis Scott y Nike, que fusionan el estilo urbano con diseños innovadores y detalles distintivos como el Swoosh invertido y la estética "Cactus Jack". Estas ediciones limitadas han revolucionado el mundo de las zapatillas, convirtiéndose en piezas codiciadas por coleccionistas y aficionados al streetwear.">
+                    Ver detalles
+                    </button>
+                    <button class="btn btn-primary agregar-carrito"
+                    data-nombre="Alimento Medium" 
+                    data-precio="160.000">Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    document.querySelectorAll('.precio').forEach(p => {
-      const precio = p.getAttribute('data-precio');
-      p.textContent = formateadorCOP.format(precio);
-    });
-  </script>
-</body>
-</html>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="n20.jpg" class="card-img-top" alt="Producto 4">
+                <div class="card-body">
+                    <h5 class="card-title">New Balance 2010.</h5>
+                    <p class="card-text">Las New Balance 2010 combinan un diseño retro futurista con materiales premium y comodidad superior. Inspiradas en el estilo running de los 2000s, destacan por su silueta robusta, suela amortiguada y estética técnica, ideal para el streetwear actual.</p>
+                    <p class="card-text">Size: XL</p>
+                    <p class="card-text">$160.000</p>
+                    <button class="btn btn-info" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#detalle-producto"
+                    data-bs-nombre="New Balance 2010."
+                    data-bs-precio="160.000"
+                    data-bs-descripcion="Las New Balance 2010 combinan un diseño retro futurista con materiales premium y comodidad superior. Inspiradas en el estilo running de los 2000s, destacan por su silueta robusta, suela amortiguada y estética técnica, ideal para el streetwear actual.">
+                    Ver detalles
+                    </button>
+                    <button class="btn btn-primary agregar-carrito" 
+                    data-nombre="colchones suaves y termicos" 
+                    data-precio="160.000">Agregar al carrito
+                </button>
+                </div>
+            </div>
+        </div>
+
+  
+
+
+   
+                  
+
+
+</div>
+<!-- Modal de Detalles del Producto -->
+<div class="modal fade" id="detalle-producto" tabindex="-1" aria-labelledby="detalleProductoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detalleProductoLabel">Detalles del Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <h5 id="modal-nombre"></h5>
+          <p id="modal-precio"></p>
+          <p id="modal-descripcion"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
