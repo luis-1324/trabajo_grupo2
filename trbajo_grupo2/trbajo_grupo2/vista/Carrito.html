@@ -2,102 +2,186 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WB pets - Carrito</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="stilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .producto-img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+        .cantidad-control {
+            width: 120px;
+        }
+        .subtotal {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+    </style>
 </head>
 <body>
-     <nav class="navbar navbar-expand-lg navbar-light  navbar-custom fixed-top">
-        <div class="container">
-            <img src="LOGO.jpg" height= "100"  alt="Imagen 1">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Productos.html">Productos</a></li>
-                
-                    <li class="nav-item"><a class="nav-link" href="Carrito.html">Carrito</a></li>
-                    
-
-</a>
-                </ul>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1><i class="bi bi-cart3"></i> Tu Carrito</h1>
+            <a href="Productos.html" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Seguir comprando
+            </a>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Productos seleccionados</h5>
+                        <div id="lista-productos">
+                            <!-- Los productos aparecerán aquí -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Resumen de compra</h5>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Envío:</span>
+                            <span>Gratis</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between fw-bold fs-5">
+                            <span>Total:</span>
+                            <span id="total">$0</span>
+                        </div>
+                        <button id="btn-pagar" class="btn btn-success w-100 mt-3">
+                            <i class="bi bi-credit-card"></i> Proceder al pago
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-       
-    </nav>
-    <br>
-
-    <div class="container py-5">
-        <h2 class="text-center">Carrito de Compras</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody id="lista-carrito">
-                <!-- Los productos agregados aparecerán aquí -->
-            </tbody>
-        </table>
-        <h3>Total: $<span id="total-carrito">0</span></h3>
-        <button class="btn btn-danger" id="vaciar-carrito">Vaciar Carrito</button>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const listaCarrito = document.getElementById("lista-carrito");
-            const totalCarrito = document.getElementById("total-carrito");
-            const btnVaciarCarrito = document.getElementById("vaciar-carrito");
-
-            function mostrarCarrito() {
-                let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-                listaCarrito.innerHTML = "";    1
-
-                let total = 0;
-
-                carrito.forEach((producto, index) => {
-                    const subtotal = producto.precio * producto.cantidad;
-                    total += subtotal;
-
-                    const row = document.createElement("tr");
-                    row.innerHTML = `
-                        <td>${producto.nombre}</td>
-                        <td>$${producto.precio}</td>
-                        <td>${producto.cantidad}</td>
-                        <td>$${subtotal}</td>
-                        <td><button class="btn btn-danger btn-sm eliminar-producto" data-index="${index}">Eliminar</button></td>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carrito = JSON.parse(localStorage.getItem('Carrito')) || [];
+            const listaProductos = document.getElementById('lista-productos');
+            const subtotalElement = document.getElementById('subtotal');
+            const totalElement = document.getElementById('total');
+            
+            function mostrarProductos() {
+                listaProductos.innerHTML = '';
+                let subtotal = 0;
+                
+                if (carrito.length === 0) {
+                    listaProductos.innerHTML = `
+                        <div class="alert alert-info text-center">
+                            <i class="bi bi-cart-x"></i> No hay productos en tu carrito
+                        </div>
                     `;
-
-                    listaCarrito.appendChild(row);
-                });
-
-                totalCarrito.textContent = total;
-
-                document.querySelectorAll(".eliminar-producto").forEach(btn => {
-                    btn.addEventListener("click", (e) => {
-                        const index = e.target.dataset.index;
-                        carrito.splice(index, 1);
-                        localStorage.setItem("carrito", JSON.stringify(carrito));
-                        mostrarCarrito();
+                } else {
+                    carrito.forEach((producto, index) => {
+                        const precioTotal = producto.precio * producto.cantidad;
+                        subtotal += precioTotal;
+                        
+                        const productoHTML = `
+                            <div class="row mb-3 align-items-center border-bottom pb-3">
+                                <div class="col-md-2">
+                                    <img src="${producto.imagen}" class="producto-img img-fluid" alt="${producto.nombre}">
+                                </div>
+                                <div class="col-md-4">
+                                    <h6>${producto.nombre}</h6>
+                                    <p class="mb-0">$${producto.precio.toLocaleString('es-CO')}</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group cantidad-control">
+                                        <button class="btn btn-outline-secondary btn-restar" data-index="${index}">-</button>
+                                        <input type="number" class="form-control text-center" 
+                                            value="${producto.cantidad}" min="1" data-index="${index}">
+                                        <button class="btn btn-outline-secondary btn-sumar" data-index="${index}">+</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-end subtotal">
+                                    $${precioTotal.toLocaleString('es-CO')}
+                                </div>
+                                <div class="col-md-1 text-end">
+                                    <button class="btn btn-sm btn-danger btn-eliminar" data-index="${index}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        listaProductos.insertAdjacentHTML('beforeend', productoHTML);
                     });
-                });
+                }
+                
+                subtotalElement.textContent = `$${subtotal.toLocaleString('es-CO')}`;
+                totalElement.textContent = `$${subtotal.toLocaleString('es-CO')}`;
             }
-
-            btnVaciarCarrito.addEventListener("click", () => {
-                localStorage.removeItem("carrito");
-                mostrarCarrito();
+            
+            // Eventos para modificar cantidades
+            listaProductos.addEventListener('click', function(e) {
+                const index = e.target.getAttribute('data-index');
+                
+                if (e.target.classList.contains('btn-sumar')) {
+                    carrito[index].cantidad += 1;
+                    actualizarCarrito();
+                }
+                
+                if (e.target.classList.contains('btn-restar')) {
+                    if (carrito[index].cantidad > 1) {
+                        carrito[index].cantidad -= 1;
+                        actualizarCarrito();
+                    }
+                }
+                
+                if (e.target.classList.contains('btn-eliminar')) {
+                    if (confirm('¿Eliminar este producto del carrito?')) {
+                        carrito.splice(index, 1);
+                        actualizarCarrito();
+                    }
+                }
             });
-
-            mostrarCarrito();
+            
+            // Evento para cambios en el input de cantidad
+            listaProductos.addEventListener('change', function(e) {
+                if (e.target.tagName === 'INPUT' && e.target.type === 'number') {
+                    const index = e.target.getAttribute('data-index');
+                    const nuevaCantidad = parseInt(e.target.value);
+                    
+                    if (nuevaCantidad > 0) {
+                        carrito[index].cantidad = nuevaCantidad;
+                        actualizarCarrito();
+                    } else {
+                        e.target.value = carrito[index].cantidad;
+                    }
+                }
+            });
+            
+            function actualizarCarrito() {
+                localStorage.setItem('Carrito', JSON.stringify(carrito));
+                mostrarProductos();
+            }
+            
+            // Botón de pagar
+            document.getElementById('btn-pagar').addEventListener('click', function() {
+                if (carrito.length > 0) {
+                    alert('Redirigiendo al proceso de pago...');
+                    // Aquí podrías redirigir a una página de checkout
+                } else {
+                    alert('Tu carrito está vacío');
+                }
+            });
+            
+            // Mostrar productos al cargar la página
+            mostrarProductos();
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

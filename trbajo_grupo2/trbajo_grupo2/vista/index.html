@@ -80,7 +80,46 @@
     </footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 
+<!-- Añade este script al final de tu index.html -->
+<script>
+  // Función para agregar al carrito y redirigir
+  function agregarYVerCarrito(nombre, precio, imagen) {
+    // Obtener carrito actual o crear uno nuevo
+    let carrito = JSON.parse(localStorage.getItem(' Carrito')) || [];
+    
+    // Verificar si el producto ya está en el carrito
+    const productoExistente = carrito.find(item => item.nombre === nombre);
+    
+    if (productoExistente) {
+      productoExistente.cantidad += 1;
+    } else {
+      carrito.push({
+        nombre: nombre,
+        precio: Number(precio),
+        imagen: imagen,
+        cantidad: 1
+      });
+    }
+    
+    // Guardar en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    
+    // Redirigir a la página del carrito
+    window.location.href = 'Carrito.html';
+  }
 
+  // Asignar evento a los botones "Agregar al carrito"
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.agregar-carrito').forEach(boton => {
+      boton.addEventListener('click', function() {
+        const nombre = this.getAttribute('data-nombre');
+        const precio = this.getAttribute('data-precio');
+        const imagen = this.closest('.card').querySelector('img').src;
+        agregarYVerCarrito(nombre, precio, imagen);
+      });
+    });
+  });
+</script>
 
 
 </body>

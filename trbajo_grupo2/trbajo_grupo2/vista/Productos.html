@@ -202,113 +202,134 @@
     <!-- Tu JavaScript personalizado -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Configuración del modal
-        var modal = document.getElementById('detalle-producto');
-        modal.addEventListener('show.bs.modal', function(event) {
-            var button = event.relatedTarget;
-            var nombre = button.getAttribute('data-bs-nombre');
-            var precio = button.getAttribute('data-bs-precio');
-            var descripcion = button.getAttribute('data-bs-descripcion');
-            var imagen = button.closest('.card').querySelector('img').src;
-            
-            document.getElementById('modal-nombre').textContent = nombre;
-            document.getElementById('modal-precio').textContent = '$' + precio;
-            document.getElementById('modal-descripcion').textContent = descripcion;
-            document.getElementById('modal-imagen').src = imagen;
-        });
+    // Configuración del modal (mantener este código)
+    var modal = document.getElementById('detalle-producto');
+    modal.addEventListener('show.bs.modal', function(event) {
+        var button = event.relatedTarget;
+        var nombre = button.getAttribute('data-bs-nombre');
+        var precio = button.getAttribute('data-bs-precio');
+        var descripcion = button.getAttribute('data-bs-descripcion');
+        var imagen = button.closest('.card').querySelector('img').src;
+        
+        document.getElementById('modal-nombre').textContent = nombre;
+        document.getElementById('modal-precio').textContent = '$' + formatPrice(precio);
+        document.getElementById('modal-descripcion').textContent = descripcion;
+        document.getElementById('modal-imagen').src = imagen;
+    });
 
-        // Carrito de compras
-        var carrito = [];
+    // Cargar carrito existente o crear uno nuevo
+    let carrito = JSON.parse(localStorage.getItem('Carrito')) || [];
+    
+    // Función para guardar el carrito en localStorage
+    function guardarCarrito() {
+        localStorage.setItem('Carrito', JSON.stringify(carrito));
+        updateCartCounter();
+    }
+    
+    // Función para agregar producto al carrito
+    function agregarAlCarrito(nombre, precio, imagen) {
+        // Convertir precio a número (eliminar puntos si existen)
+        const precioNumerico = parseFloat(precio.toString().replace(/\./g, ''));
         
-        document.querySelectorAll('.agregar-carrito').forEach(function(boton) {
-            boton.addEventListener('click', function() {
-                var nombre = this.getAttribute('data-nombre');
-                var precio = this.getAttribute('data-precio');
-                
-                carrito.push({
-                    nombre: nombre,
-                    precio: precio
-                });
-                
-                // Mostrar notificación
-                showToast(nombre, precio);
-                
-                // Actualizar contador del carrito
-                updateCartCounter();
-            });
-        });
+        // Buscar si el producto ya está en el carrito
+        const productoExistente = carrito.find(item => item.nombre === nombre);
         
-        // Botón comprar ahora en el modal
-        document.getElementById('btn-comprar-ahora').addEventListener('click', function() {
-            var nombre = document.getElementById('modal-nombre').textContent;
-            var precio = document.getElementById('modal-precio').textContent.replace('$', '').replace(/\./g, '');
-            
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
             carrito.push({
                 nombre: nombre,
-                precio: precio
+                precio: precioNumerico,
+                imagen: imagen,
+                cantidad: 1
             });
-            
-            showToast(nombre, precio);
-            updateCartCounter();
-            
-            // Cerrar el modal
-            var modal = bootstrap.Modal.getInstance(document.getElementById('detalle-producto'));
-            modal.hide();
-        });
+        }
         
-        // Función para mostrar notificación
-        function showToast(nombre, precio) {
-            var toastHTML = `
-                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-                    <div class="toast show align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="d-flex">
-                            <div class="toast-body">
-                                <i class="bi bi-check-circle-fill me-2"></i>
-                                ${nombre} - $${formatPrice(precio)} agregado al carrito
-                            </div>
-                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        guardarCarrito();
+        showToast(nombre, precioNumerico);
+    }
+    
+    // Eventos para botones "Agregar al carrito"
+    document.querySelectorAll('.agregar-carrito').forEach(function(boton) {
+        boton.addEventListener('click', function() {
+            const card = this.closest('.card');
+            const nombre = this.getAttribute('data-nombre');
+            const precio = this.getAttribute('data-precio');
+            const imagen = card.querySelector('img').src;
+            
+            agregarAlCarrito(nombre, precio, imagen);
+        });
+    });
+    
+    // Botón comprar ahora en el modal
+    document.getElementById('btn-comprar-ahora').addEventListener('click', function() {
+        const nombre = document.getElementById('modal-nombre').textContent;
+        const precioText = document.getElementById('modal-precio').textContent;
+        const precio = precioText.replace('$', '').replace(/\./g, '');
+        const imagen = document.getElementById('modal-imagen').src;
+        
+        agregarAlCarrito(nombre, precio, imagen);
+        
+        // Cerrar el modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('detalle-producto'));
+        modal.hide();
+    });
+    
+    // Función para mostrar notificación
+    function showToast(nombre, precio) {
+        const toastHTML = `
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div class="toast show align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            ${nombre} - $${formatPrice(precio)} agregado al carrito
                         </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                 </div>
+            </div>
+        `;
+        
+        const toastContainer = document.createElement('div');
+        toastContainer.innerHTML = toastHTML;
+        document.body.appendChild(toastContainer);
+        
+        setTimeout(function() {
+            toastContainer.remove();
+        }, 3000);
+    }
+    
+    // Función para formatear precios
+    function formatPrice(price) {
+        return parseInt(price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    
+    // Función para actualizar contador del carrito
+    function updateCartCounter() {
+        // Calcular total de items (sumando cantidades)
+        const totalItems = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+        
+        let counter = document.getElementById('cart-counter');
+        if (!counter) {
+            const nav = document.createElement('div');
+            nav.className = 'position-fixed top-0 end-0 p-3';
+            nav.style.zIndex = '11';
+            nav.innerHTML = `
+                <a href="Carrito.html" class="btn btn-primary position-relative">
+                    <i class="bi bi-cart-fill"></i>
+                    <span id="cart-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        ${totalItems}
+                    </span>
+                </a>
             `;
-            
-            var toastContainer = document.createElement('div');
-            toastContainer.innerHTML = toastHTML;
-            document.body.appendChild(toastContainer);
-            
-            // Eliminar la notificación después de 3 segundos
-            setTimeout(function() {
-                toastContainer.remove();
-            }, 3000);
+            document.body.appendChild(nav);
+        } else {
+            counter.textContent = totalItems;
         }
-        
-        // Función para formatear precios
-        function formatPrice(price) {
-            return parseInt(price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-        
-        // Función para actualizar contador del carrito
-        function updateCartCounter() {
-            var counter = document.getElementById('cart-counter');
-            if (!counter) {
-                // Crear el contador si no existe
-                var nav = document.createElement('div');
-                nav.className = 'position-fixed top-0 end-0 p-3';
-                nav.style.zIndex = '11';
-                nav.innerHTML = `
-                    <button class="btn btn-primary position-relative">
-                        <i class="bi bi-cart-fill"></i>
-                        <span id="cart-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            ${carrito.length}
-                        </span>
-                    </button>
-                `;
-                document.body.appendChild(nav);
-            } else {
-                counter.textContent = carrito.length;
-            }
-        }
-    });
+    }
+    
+    // Inicializar contador al cargar la página
+    updateCartCounter();
+});
     </script>
-</body>
-</html>
