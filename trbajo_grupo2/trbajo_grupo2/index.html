@@ -1,0 +1,124 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camino a una vida digital</title>
+    <link rel="stylesheet" href="stilo.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/5214/5214141.png" alt="TechStore Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="login.php">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="Carrito.html">Carrito</a></li>
+            </ul>
+            <a class="registro_img" href="login.php">
+                <img src="https://cdn-icons-png.flaticon.com/512/10109/10109875.png" alt="logo_register">
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Camino a una vida digital</h1>
+            <p>Descubre la última tecnología a los mejores precios</p>
+            <a href="Productos.html" class="cta-button">Ver Productos</a>
+        </section>
+
+        <section id="productos" class="featured-products">
+            <h2>Productos Destacados</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/32/c8/69/32c869b09fc01831ff3ce0217ba26149.jpg" alt="Smartphone">
+                    <h3>Smartphones</h3>
+                    <p>Los últimos modelos de las mejores marcas</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/28/e1/bb/28e1bb4923339441c8ed7aa86f774653.jpg" alt="Laptop">
+                    <h3>Laptops</h3>
+                    <p>Potencia y portabilidad en un solo lugar</p>
+                </div>
+                <div class="product-card">
+                    <img src="https://i.pinimg.com/736x/5a/12/e6/5a12e6c567d646d5a169beb22c9c9b32.jpg" alt="Tablet">
+                    <h3>Tablets</h3>
+                    <p>La mejor experiencia multimedia</p>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ef86818980af9b8a8c879c9b809d8ac18c8082">[email&#160;protected]</a></p>
+                <p>Teléfono: (123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#"><img src="estilos/20673.png" alt="Facebook"></a>
+                    <a href="#"><img src="estilos/whatsapp-logo-png_seeklogo-168310.png" alt="Whatsapp"></a>
+                    <a href="#"><img src="estilos/instagram-logo-instagram-logo-transparent-instagram-icon-transparent-free-free-png.webp" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TechStore. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+
+<!-- Añade este script al final de tu index.html -->
+<script>
+  // Función para agregar al carrito y redirigir
+  function agregarYVerCarrito(nombre, precio, imagen) {
+    // Obtener carrito actual o crear uno nuevo
+    let carrito = JSON.parse(localStorage.getItem(' Carrito')) || [];
+    
+    // Verificar si el producto ya está en el carrito
+    const productoExistente = carrito.find(item => item.nombre === nombre);
+    
+    if (productoExistente) {
+      productoExistente.cantidad += 1;
+    } else {
+      carrito.push({
+        nombre: nombre,
+        precio: Number(precio),
+        imagen: imagen,
+        cantidad: 1
+      });
+    }
+    
+    // Guardar en localStorage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    
+    // Redirigir a la página del carrito
+    window.location.href = 'Carrito.html';
+  }
+
+  // Asignar evento a los botones "Agregar al carrito"
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.agregar-carrito').forEach(boton => {
+      boton.addEventListener('click', function() {
+        const nombre = this.getAttribute('data-nombre');
+        const precio = this.getAttribute('data-precio');
+        const imagen = this.closest('.card').querySelector('img').src;
+        agregarYVerCarrito(nombre, precio, imagen);
+      });
+    });
+  });
+</script>
+
+
+</body>
+</html>
+</html>
+
