@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Laptops</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <style>
+        .card {
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: contain;
+            padding: 10px;
+        }
+        .price {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        .btn-agregar {
+            margin-top: 10px;
+        }.hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            margin-bottom: 2rem;
+        }.logo img {
+            height: 50px;
+        }    
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">TechStore</a>
+            <div class="logo">
+                <img src="https://cdn-icons-png.flaticon.com/512/5214/5214141.png" alt="TechStore Logo">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Productos.html">Celulares</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Laptops.html">Laptops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tablets.html">Tablets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Carrito.html">Carrito</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>  
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Tienda de Laptops</h1>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://i.blogs.es/ae42e3/macbook-air-colores/1366_2000.jpeg" class="card-img-top" alt="MacBook Air M2">
+                    <div class="card-body">
+                        <h5 class="card-title">MacBook Air M2</h5>
+                        <p class="card-text">Laptop ultra delgada con chip M2 de Apple</p>
+                        <p class="card-text price">$4.500.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="MacBook Air M2"
+                            data-bs-precio="4.500.000"
+                            data-bs-descripcion="El MacBook Air con chip M2 es una laptop ultradelgada y liviana con pantalla Liquid Retina de 13.6 pulgadas, procesador M2 de 8 núcleos, hasta 24GB de memoria unificada y SSD de hasta 2TB. Ofrece hasta 18 horas de batería, cámara FaceTime HD 1080p y sistema de sonido de cuatro altavoces, ideal para productividad y creatividad.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="MacBook Air M2" 
+                            data-precio="4500000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-13-9315/media-gallery/notebook-xps-9315-nt-blue-gallery-3.psd?fmt=pjpg&pscan=auto&scl=1&wid=4108&hei=2874&qlt=100,1&resMode=sharp2&size=4108,2874&chrss=full&imwidth=5000" class="card-img-top" alt="Dell XPS 13">
+                    <div class="card-body">
+                        <h5 class="card-title">Dell XPS 13</h5>
+                        <p class="card-text">Laptop premium con diseño compacto</p>
+                        <p class="card-text price">$3.800.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="Dell XPS 13"
+                            data-bs-precio="3.800.000"
+                            data-bs-descripcion="La Dell XPS 13 es una laptop premium ultraportátil con pantalla InfinityEdge de 13.4 pulgadas, procesador Intel Core i7 de 12va generación, 16GB de RAM LPDDR5, SSD de 512GB y gráficos Intel Iris Xe. Cuenta con construcción en aluminio y fibra de carbono, teclado retroiluminado y hasta 12 horas de batería.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="Dell XPS 13" 
+                            data-precio="3800000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://m.media-amazon.com/images/I/71Xb2EVozmL.jpg" class="card-img-top" alt="HP Pavilion Gaming">
+                    <div class="card-body">
+                        <h5 class="card-title">HP Pavilion Gaming</h5>
+                        <p class="card-text">Laptop gaming con excelente rendimiento</p>
+                        <p class="card-text price">$2.800.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="HP Pavilion Gaming"
+                            data-bs-precio="2.800.000"
+                            data-bs-descripcion="La HP Pavilion Gaming es una laptop diseñada para juegos con pantalla Full HD de 15.6 pulgadas, procesador AMD Ryzen 5 5600H, 8GB de RAM DDR4, SSD de 256GB, tarjeta gráfica NVIDIA GeForce GTX 1650 y teclado retroiluminado. Perfecta para gaming casual y tareas multimedia.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="HP Pavilion Gaming" 
+                            data-precio="2800000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://p1-ofp.static.pub//fes/cms/2024/03/07/6a3k4frc44nsw0i57pcudnji8exmng820679.png" class="card-img-top" alt="Lenovo ThinkPad E15">
+                    <div class="card-body">
+                        <h5 class="card-title">Lenovo ThinkPad E15</h5>
+                        <p class="card-text">Laptop empresarial confiable y duradera</p>
+                        <p class="card-text price">$2.200.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="Lenovo ThinkPad E15"
+                            data-bs-precio="2.200.000"
+                            data-bs-descripcion="La Lenovo ThinkPad E15 es una laptop empresarial robusta con pantalla Full HD de 15.6 pulgadas, procesador Intel Core i5 de 11va generación, 8GB de RAM DDR4, SSD de 256GB y gráficos Intel UHD. Incluye teclado TrackPoint, construcción militar-grade y hasta 10 horas de batería.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="Lenovo ThinkPad E15"
+                            data-precio="2200000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.professionalwireless.com.co/wp-content/uploads/2023/11/ROG-STRIX-G513RM-WS74_2.png" class="card-img-top" alt="ASUS ROG Strix G15">
+                    <div class="card-body">
+                        <h5 class="card-title">ASUS ROG Strix G15</h5>
+                        <p class="card-text">Laptop gaming de alto rendimiento</p>
+                        <p class="card-text price">$5.200.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="ASUS ROG Strix G15"
+                            data-bs-precio="5.200.000"
+                            data-bs-descripcion="La ASUS ROG Strix G15 es una laptop gaming premium con pantalla Full HD de 15.6 pulgadas a 144Hz, procesador AMD Ryzen 7 5800H, 16GB de RAM DDR4, SSD de 512GB, NVIDIA GeForce RTX 3060 y sistema de refrigeración avanzado. Diseñada para gaming competitivo y streaming.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="ASUS ROG Strix G15" 
+                            data-precio="5200000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://m.media-amazon.com/images/I/71vvXGmdKWL._AC_SL1500_.jpg" class="card-img-top" alt="Acer Aspire 5">
+                    <div class="card-body">
+                        <h5 class="card-title">Acer Aspire 5</h5>
+                        <p class="card-text">Laptop versátil para uso diario</p>
+                        <p class="card-text price">$1.800.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="Acer Aspire 5"
+                            data-bs-precio="1.800.000"
+                            data-bs-descripcion="La Acer Aspire 5 es una laptop versátil y económica con pantalla Full HD de 15.6 pulgadas, procesador Intel Core i5 de 11va generación, 8GB de RAM DDR4, SSD de 256GB y gráficos Intel UHD. Ideal para estudiantes y uso profesional básico con excelente relación calidad-precio.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar"
+                            data-nombre="Acer Aspire 5"
+                            data-precio="1800000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles del Producto -->
+    <div class="modal fade" id="detalle-producto" tabindex="-1" aria-labelledby="detalleProductoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="detalleProductoLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modal-imagen" src="" class="img-fluid rounded" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modal-nombre" class="mb-3"></h3>
+                            <h4 class="text-success mb-4" id="modal-precio"></h4>
+                            <p id="modal-descripcion" class="lead"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btn-comprar-ahora">
+                        <i class="bi bi-bag-check"></i> Comprar ahora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript personalizado -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Configuración del modal
+    var modal = document.getElementById('detalle-producto');
+    modal.addEventListener('show.bs.modal', function(event) {
+        var button = event.relatedTarget;
+        var nombre = button.getAttribute('data-bs-nombre');
+        var precio = button.getAttribute('data-bs-precio');
+        var descripcion = button.getAttribute('data-bs-descripcion');
+        var imagen = button.closest('.card').querySelector('img').src;
+        
+        document.getElementById('modal-nombre').textContent = nombre;
+        document.getElementById('modal-precio').textContent = '$' + formatPrice(precio);
+        document.getElementById('modal-descripcion').textContent = descripcion;
+        document.getElementById('modal-imagen').src = imagen;
+    });
+
+    // Cargar carrito existente o crear uno nuevo
+    let carrito = JSON.parse(localStorage.getItem('Carrito')) || [];
+    
+    // Función para guardar el carrito en localStorage
+    function guardarCarrito() {
+        localStorage.setItem('Carrito', JSON.stringify(carrito));
+        updateCartCounter();
+    }
+    
+    // Función para agregar producto al carrito
+    function agregarAlCarrito(nombre, precio, imagen) {
+        // Convertir precio a número (eliminar puntos si existen)
+        const precioNumerico = parseFloat(precio.toString().replace(/\./g, ''));
+        
+        // Buscar si el producto ya está en el carrito
+        const productoExistente = carrito.find(item => item.nombre === nombre);
+        
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({
+                nombre: nombre,
+                precio: precioNumerico,
+                imagen: imagen,
+                cantidad: 1
+            });
+        }
+        
+        guardarCarrito();
+        showToast(nombre, precioNumerico);
+    }
+    
+    // Eventos para botones "Agregar al carrito"
+    document.querySelectorAll('.agregar-carrito').forEach(function(boton) {
+        boton.addEventListener('click', function() {
+            const card = this.closest('.card');
+            const nombre = this.getAttribute('data-nombre');
+            const precio = this.getAttribute('data-precio');
+            const imagen = card.querySelector('img').src;
+            
+            agregarAlCarrito(nombre, precio, imagen);
+        });
+    });
+    
+    // Botón comprar ahora en el modal
+    document.getElementById('btn-comprar-ahora').addEventListener('click', function() {
+        const nombre = document.getElementById('modal-nombre').textContent;
+        const precioText = document.getElementById('modal-precio').textContent;
+        const precio = precioText.replace('$', '').replace(/\./g, '');
+        const imagen = document.getElementById('modal-imagen').src;
+        
+        agregarAlCarrito(nombre, precio, imagen);
+        
+        // Cerrar el modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('detalle-producto'));
+        modal.hide();
+    });
+    
+    // Función para mostrar notificación
+    function showToast(nombre, precio) {
+        const toastHTML = `
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div class="toast show align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            ${nombre} - $${formatPrice(precio)} agregado al carrito
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        const toastContainer = document.createElement('div');
+        toastContainer.innerHTML = toastHTML;
+        document.body.appendChild(toastContainer);
+        
+        setTimeout(function() {
+            toastContainer.remove();
+        }, 3000);
+    }
+    
+    // Función para formatear precios
+    function formatPrice(price) {
+        return parseInt(price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    
+    // Función para actualizar contador del carrito
+    function updateCartCounter() {
+        // Calcular total de items (sumando cantidades)
+        const totalItems = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+        
+        let counter = document.getElementById('cart-counter');
+        if (!counter) {
+            const nav = document.createElement('div');
+            nav.className = 'position-fixed top-0 end-0 p-3';
+            nav.style.zIndex = '11';
+            nav.innerHTML = `
+                <a href="Carrito.html" class="btn btn-primary position-relative">
+                    <i class="bi bi-cart-fill"></i>
+                    <span id="cart-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        ${totalItems}
+                    </span>
+                </a>
+            `;
+            document.body.appendChild(nav);
+        } else {
+            counter.textContent = totalItems;
+        }
+    }
+    
+    // Inicializar contador al cargar la página
+    updateCartCounter();
+});
+    </script>
+</body>
+</html>

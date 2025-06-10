@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Tablets</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <style>
+        .card {
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: contain;
+            padding: 10px;
+        }
+        .price {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+        .btn-agregar {
+            margin-top: 10px;
+        }    
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">TechStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Productos.html">Celulares</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Laptops.html">Laptops</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Tablets.html">Tablets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Carrito.html">Carrito</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>  
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Tienda de Tablets</h1>
+        
+        <div class="row">
+            <!-- iPad Air (5ª generación) -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-blue-202203?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1645065732688" class="card-img-top" alt="iPad Air">
+                    <div class="card-body">
+                        <h5 class="card-title">iPad Air (5ª generación)</h5>
+                        <p class="card-text">Potencia del chip M1, pantalla de 10.9 pulgadas</p>
+                        <p class="card-text price">$2.800.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="iPad Air (5ª generación)"
+                            data-bs-precio="2.800.000"
+                            data-bs-descripcion="El iPad Air de 5ª generación con chip M1 ofrece un rendimiento increíble con pantalla Liquid Retina de 10.9 pulgadas, cámara frontal ultra gran angular de 12MP con Encuadre Centrado, y compatibilidad con Apple Pencil (2ª generación) y Magic Keyboard. Ideal para creativos y profesionales.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="iPad Air (5ª generación)" 
+                            data-precio="2800000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div> 
+                </div>
+            </div>
+
+            <!-- Samsung Galaxy Tab S8 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.compudemano.com/wp-content/uploads/2024/05/Galaxy-Tab-S8-Ultra-8GB_128GB-Cover-con.png" class="card-img-top" alt="Samsung Galaxy Tab S8">
+                    <div class="card-body">
+                        <h5 class="card-title">Samsung Galaxy Tab S8</h5>
+                        <p class="card-text">Tablet Android premium con S Pen incluido</p>
+                        <p class="card-text price">$3.200.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="Samsung Galaxy Tab S8"
+                            data-bs-precio="3.200.000"
+                            data-bs-descripcion="La Samsung Galaxy Tab S8 cuenta con pantalla TFT de 11 pulgadas, procesador Snapdragon 8 Gen 1, S Pen incluido, y hasta 12 horas de batería. Perfecta para productividad y entretenimiento, con soporte para Samsung DeX y múltiples aplicaciones simultáneas.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="Samsung Galaxy Tab S8" 
+                            data-precio="3200000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lenovo Tab P12 Pro -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://p2-ofp.static.pub/fes/cms/2021/10/28/juqs65pgl1gh3dysi7yv1tnvtsiqva364946.png" class="card-img-top" alt="Lenovo Tab P12 Pro">
+                    <div class="card-body">
+                        <h5 class="card-title">Lenovo Tab P12 Pro</h5>
+                        <p class="card-text">Tablet Android de 12.6" con pantalla OLED</p>
+                        <p class="card-text price">$2.500.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="Lenovo Tab P12 Pro"
+                            data-bs-precio="2.500.000"
+                            data-bs-descripcion="La Lenovo Tab P12 Pro ofrece una experiencia premium con pantalla OLED de 12.6 pulgadas 2K, procesador MediaTek Dimensity 7050, sistema de altavoces JBL, y soporte para Lenovo Precision Pen 3. Ideal para entretenimiento y productividad profesional.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="Lenovo Tab P12 Pro" 
+                            data-precio="2500000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Microsoft Surface Pro 9 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://www.dmi.es/photo/897/106814/81774879/bg/microsoft-surface-pro-9-i7-256gb-13-w11-home.jpg" class="card-img-top" alt="Microsoft Surface Pro 9">
+                    <div class="card-body">
+                        <h5 class="card-title">Microsoft Surface Pro 9</h5>
+                        <p class="card-text">2 en 1: tablet y laptop con Windows 11</p>
+                        <p class="card-text price">$4.500.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="Microsoft Surface Pro 9"
+                            data-bs-precio="4.500.000"
+                            data-bs-descripcion="Surface Pro 9 combina la versatilidad de una tablet con el rendimiento de una laptop. Con procesador Intel Core de 12ª generación, pantalla PixelSense de 13 pulgadas, y compatibilidad con Surface Pen y Type Cover. Ejecuta aplicaciones completas de Windows 11.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar" 
+                            data-nombre="Microsoft Surface Pro 9"
+                            data-precio="4500000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iPad Pro 12.9" -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://wintechnology.co/wp-content/uploads/Ipad_0009.png" class="card-img-top" alt="iPad Pro 12.9">
+                    <div class="card-body">
+                        <h5 class="card-title">iPad Pro 12.9"</h5>
+                        <p class="card-text">La tablet más avanzada con chip M2</p>
+                        <p class="card-text price">$5.800.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="iPad Pro 12.9"
+                            data-bs-precio="5.800.000"
+                            data-bs-descripcion="El iPad Pro de 12.9 pulgadas con chip M2 es la tablet más potente del mundo. Cuenta con pantalla Liquid Retina XDR, cámara TrueDepth con ultra gran angular, y compatibilidad total con Apple Pencil y Magic Keyboard. Perfecto para profesionales creativos y tareas exigentes.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar"
+                            data-nombre="iPad Pro 12.9"
+                            data-precio="5800000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xiaomi Pad 6 -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://i02.appmifile.com/mi-com-product/fly-birds/xiaomi-pad-6/m/8606d20c7947d9b9941c2e1a7c9c3cff.png" class="card-img-top" alt="Xiaomi Pad 6">
+                    <div class="card-body">
+                        <h5 class="card-title">Xiaomi Pad 6</h5>
+                        <p class="card-text">Excelente relación precio-rendimiento</p>
+                        <p class="card-text price">$1.200.000</p>
+                        <button class="btn btn-info" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detalle-producto"
+                            data-bs-nombre="Xiaomi Pad 6"
+                            data-bs-precio="1.200.000"
+                            data-bs-descripcion="La Xiaomi Pad 6 ofrece un gran rendimiento con procesador Snapdragon 870, pantalla 2.8K de 11 pulgadas con 144Hz, sistema de altavoces cuádruple, y batería de 8840mAh. Incluye soporte para Xiaomi Smart Pen y es ideal para estudiantes y uso general.">
+                            Ver detalles
+                        </button>
+                        <button class="btn btn-primary agregar-carrito btn-agregar"
+                            data-nombre="Xiaomi Pad 6"
+                            data-precio="1200000">
+                            <i class="bi bi-cart-plus"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles del Producto -->
+    <div class="modal fade" id="detalle-producto" tabindex="-1" aria-labelledby="detalleProductoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="detalleProductoLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modal-imagen" src="" class="img-fluid rounded" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="modal-nombre" class="mb-3"></h3>
+                            <h4 class="text-success mb-4" id="modal-precio"></h4>
+                            <p id="modal-descripcion" class="lead"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btn-comprar-ahora">
+                        <i class="bi bi-bag-check"></i> Comprar ahora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Tu JavaScript personalizado -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Configuración del modal (mantener este código)
+    var modal = document.getElementById('detalle-producto');
+    modal.addEventListener('show.bs.modal', function(event) {
+        var button = event.relatedTarget;
+        var nombre = button.getAttribute('data-bs-nombre');
+        var precio = button.getAttribute('data-bs-precio');
+        var descripcion = button.getAttribute('data-bs-descripcion');
+        var imagen = button.closest('.card').querySelector('img').src;
+        
+        document.getElementById('modal-nombre').textContent = nombre;
+        document.getElementById('modal-precio').textContent = '$' + formatPrice(precio);
+        document.getElementById('modal-descripcion').textContent = descripcion;
+        document.getElementById('modal-imagen').src = imagen;
+    });
+
+    // Cargar carrito existente o crear uno nuevo
+    let carrito = JSON.parse(localStorage.getItem('Carrito')) || [];
+    
+    // Función para guardar el carrito en localStorage
+    function guardarCarrito() {
+        localStorage.setItem('Carrito', JSON.stringify(carrito));
+        updateCartCounter();
+    }
+    
+    // Función para agregar producto al carrito
+    function agregarAlCarrito(nombre, precio, imagen) {
+        // Convertir precio a número (eliminar puntos si existen)
+        const precioNumerico = parseFloat(precio.toString().replace(/\./g, ''));
+        
+        // Buscar si el producto ya está en el carrito
+        const productoExistente = carrito.find(item => item.nombre === nombre);
+        
+        if (productoExistente) {
+            productoExistente.cantidad += 1;
+        } else {
+            carrito.push({
+                nombre: nombre,
+                precio: precioNumerico,
+                imagen: imagen,
+                cantidad: 1
+            });
+        }
+        
+        guardarCarrito();
+        showToast(nombre, precioNumerico);
+    }
+    
+    // Eventos para botones "Agregar al carrito"
+    document.querySelectorAll('.agregar-carrito').forEach(function(boton) {
+        boton.addEventListener('click', function() {
+            const card = this.closest('.card');
+            const nombre = this.getAttribute('data-nombre');
+            const precio = this.getAttribute('data-precio');
+            const imagen = card.querySelector('img').src;
+            
+            agregarAlCarrito(nombre, precio, imagen);
+        });
+    });
+    
+    // Botón comprar ahora en el modal
+    document.getElementById('btn-comprar-ahora').addEventListener('click', function() {
+        const nombre = document.getElementById('modal-nombre').textContent;
+        const precioText = document.getElementById('modal-precio').textContent;
+        const precio = precioText.replace('$', '').replace(/\./g, '');
+        const imagen = document.getElementById('modal-imagen').src;
+        
+        agregarAlCarrito(nombre, precio, imagen);
+        
+        // Cerrar el modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('detalle-producto'));
+        modal.hide();
+    });
+    
+    // Función para mostrar notificación
+    function showToast(nombre, precio) {
+        const toastHTML = `
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div class="toast show align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            ${nombre} - $${formatPrice(precio)} agregado al carrito
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        const toastContainer = document.createElement('div');
+        toastContainer.innerHTML = toastHTML;
+        document.body.appendChild(toastContainer);
+        
+        setTimeout(function() {
+            toastContainer.remove();
+        }, 3000);
+    }
+    
+    // Función para formatear precios
+    function formatPrice(price) {
+        return parseInt(price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    
+    // Función para actualizar contador del carrito
+    function updateCartCounter() {
+        // Calcular total de items (sumando cantidades)
+        const totalItems = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+        
+        let counter = document.getElementById('cart-counter');
+        if (!counter) {
+            const nav = document.createElement('div');
+            nav.className = 'position-fixed top-0 end-0 p-3';
+            nav.style.zIndex = '11';
+            nav.innerHTML = `
+                <a href="Carrito.html" class="btn btn-primary position-relative">
+                    <i class="bi bi-cart-fill"></i>
+                    <span id="cart-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        ${totalItems}
+                    </span>
+                </a>
+            `;
+            document.body.appendChild(nav);
+        } else {
+            counter.textContent = totalItems;
+        }
+    }
+    
+    // Inicializar contador al cargar la página
+    updateCartCounter();
+});
+    </script>
